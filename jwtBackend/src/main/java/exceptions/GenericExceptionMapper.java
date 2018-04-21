@@ -12,13 +12,13 @@ import javax.ws.rs.ext.Provider;
 /*
   Utility class to map errors into JSON
 */
-class Error {
+class GenericError {
 
     private int statusCode;
     private String statusDescription;
     private String errorMessage;
 
-    public Error(int statusCode, String statusDescription, String errorMessage) {
+    public GenericError(int statusCode, String statusDescription, String errorMessage) {
         this.statusCode = statusCode;
         this.statusDescription = statusDescription;
         this.errorMessage = errorMessage;
@@ -57,7 +57,7 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable>  {
         Response.StatusType type = getStatusType(ex);
         Logger.getLogger(GenericExceptionMapper.class.getName()).log(Level.SEVERE, null, ex);
 
-        Error error = new Error(
+        GenericError error = new GenericError(
                 type.getStatusCode(),
                 type.getReasonPhrase(),
                 ex.getLocalizedMessage());
@@ -82,7 +82,7 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable>  {
     
     //Small hack, to provide json-error response in the filter
     public static Response makeErrRes(String msg,int status){
-        Error error = new Error(
+        GenericError error = new GenericError(
                 status,
                 msg,
                 msg);

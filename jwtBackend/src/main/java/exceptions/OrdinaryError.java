@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package security;
+package exceptions;
 
 /**
  *
  * @author Ejer
  */
-public class Error {
+public class OrdinaryError {
     
    private String errormessage;
    private int errorid;
 
-    public Error(String errormessage, int errorid) {
+    public OrdinaryError(String errormessage, int errorid) {
         this.errormessage = errormessage;
         this.errorid = errorid;
     }
 
-    Error() {
+    OrdinaryError() {
      
     }
 

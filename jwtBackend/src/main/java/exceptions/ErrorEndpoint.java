@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package security;
+package exceptions;
 
 import java.io.IOException;
 import javax.ws.rs.GET;
@@ -22,8 +22,9 @@ public class ErrorEndpoint {
      @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getError() throws IOException {
-     return gson.toJson(new Error("An error occured, please try again or contact the webadministrator", 0));
+     return gson.toJson(new OrdinaryError("An error occured, please try again or contact the webadministrator", 0));
     }
+ 
     
     public static void main(String[] args) throws IOException {
        ErrorEndpoint eere= new ErrorEndpoint();
